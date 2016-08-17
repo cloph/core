@@ -50,6 +50,7 @@ CoreTextStyle::CoreTextStyle( const FontSelectPattern& rFSD )
     , mfFontRotation( 0.0 )
     , maFontSelData( rFSD )
     , mpStyleDict( nullptr )
+    , mpHBFace( nullptr )
 {
     const FontSelectPattern* const pReqFont = &rFSD;
 
@@ -116,6 +117,8 @@ CoreTextStyle::~CoreTextStyle()
 {
     if( mpStyleDict )
         CFRelease( mpStyleDict );
+    if( mpHBFace )
+        hb_face_destroy( mpHBFace );
 }
 
 void CoreTextStyle::GetFontMetric( ImplFontMetricDataRef& rxFontMetric ) const
