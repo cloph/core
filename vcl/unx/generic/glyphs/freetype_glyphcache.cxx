@@ -462,7 +462,7 @@ ServerFont::ServerFont( const FontSelectPattern& rFSD, FreetypeFontInfo* pFI )
     mbArtBold( false ),
     mbUseGamma( false ),
     mpLayoutEngine( nullptr ),
-    mpHBFace( nullptr )
+    mpHBFont( nullptr )
 {
     // TODO: move update of mpFontInstance into FontEntry class when
     // it becomes responsible for the ServerFont instantiation
@@ -611,8 +611,8 @@ ServerFont::~ServerFont()
 
     mpFontInfo->ReleaseFaceFT();
 
-    if( mpHBFace )
-        hb_face_destroy( mpHBFace );
+    if( mpHBFont )
+        hb_font_destroy( mpHBFont );
 
     ReleaseFromGarbageCollect();
 }

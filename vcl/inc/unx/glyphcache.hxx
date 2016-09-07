@@ -182,8 +182,8 @@ public:
     sal_GlyphId             FixupGlyphIndex( sal_GlyphId aGlyphId, sal_UCS4 ) const;
     bool                    GetGlyphOutline( sal_GlyphId aGlyphId, basegfx::B2DPolyPolygon& ) const;
     bool                    GetAntialiasAdvice() const;
-    hb_face_t*              GetHBFace() { return mpHBFace; }
-    void                    SetHBFace( hb_face_t* pHBFace ) { mpHBFace=pHBFace; }
+    hb_font_t*              GetHBFont() { return mpHBFont; }
+    void                    SetHBFont( hb_font_t* pHBFont ) { mpHBFont = pHBFont; }
 
 private:
     friend class GlyphCache;
@@ -243,7 +243,7 @@ private:
     GlyphSubstitution       maGlyphSubstitution;
 
     ServerFontLayoutEngine* mpLayoutEngine;
-    hb_face_t*              mpHBFace;
+    hb_font_t*              mpHBFont;
 };
 
 // a class for cache entries for physical font instances that are based on serverfonts
